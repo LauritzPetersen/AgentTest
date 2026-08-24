@@ -4,13 +4,12 @@ import java.util.Scanner;
 
 public class Main {
 
-    private record Dish(String name, int price) {
-    }
+    private static final DishService DISH_SERVICE = new DishService();
 
     private static final Dish[] DISHES = {
-            new Dish("Festivalburger", 59),
-            new Dish("Sprøde fritter", 35),
-            new Dish("Vegansk bowl", 65)
+            DISH_SERVICE.createDish("Festivalburger", 59),
+            DISH_SERVICE.createDish("Sprøde fritter", 35),
+            DISH_SERVICE.createDish("Vegansk bowl", 65)
     };
 
     public static void main(String[] args) {
@@ -51,7 +50,7 @@ public class Main {
 
         for (int i = 0; i < DISHES.length; i++) {
             Dish dish = DISHES[i];
-            System.out.printf("%d. %s - %d kr.%n", i + 1, dish.name(), dish.price());
+            System.out.printf("%d. %s - %d kr.%n", i + 1, dish.getName(), dish.getPrice());
         }
     }
 }
